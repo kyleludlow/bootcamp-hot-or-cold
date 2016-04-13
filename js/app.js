@@ -12,17 +12,8 @@ $(document).ready(function () {
     });
 
 
-    $('#guessButton').click(function (event) {
-        event.preventDefault();
-        feedbackFunction();
-    });
-
-    $('.new').click(newGame);
-
-
     var mysteryNumber;
     var numberOfGuesses = 0;
-
 
     var newGame = function () {
 
@@ -37,11 +28,9 @@ $(document).ready(function () {
         mysteryNumber = Math.ceil(Math.random() * 100);
 
         console.log(mysteryNumber);
-    }
-
+    };
 
     newGame();
-
 
     var feedbackFunction = function () {
 
@@ -70,14 +59,12 @@ $(document).ready(function () {
             else if (Math.abs(mysteryNumber - userGuess) < 30) {
                 $('#feedback').text('Warm');
             }
-
             else if (Math.abs(mysteryNumber - userGuess) < 40) {
                 $('#feedback').text('cold');
             }
             else if (Math.abs(mysteryNumber - userGuess) >= 40) {
                 $('#feedback').text('Ice cold');
             }
-
 
             $('#guessList').append('<li>' + userGuess + '</li>');
             $('#userGuess').val('');
@@ -86,4 +73,12 @@ $(document).ready(function () {
 
         }
     };
+
+    $('#guessButton').click(function (event) {
+        event.preventDefault();
+        feedbackFunction();
+    });
+
+    $('.new').click(newGame);
+
 });
